@@ -47,4 +47,27 @@ describe("Cat", () => {
 
       expect(felix.isCool()).toBe(expected);
     })
+
+    it('should return data ', () => {
+      expect(felix.getData()).toMatchSnapshot();
+    });
+
+    describe('when a cat is stroked', () => {
+      beforeEach(() => {
+        jest.useFakeTimers();
+
+        felix.stroke();
+      });
+
+      describe('and we wait 5 seconds', () => {
+        beforeEach(() => {
+          //jest.advanceTimersByTime(5000);
+          jest.runAllTimers();
+        });
+
+        it('should miaw after 5 seconds', () => {
+          expect(felix.saidMiaw).toBe(true);
+        });
+      });
+    });
 });

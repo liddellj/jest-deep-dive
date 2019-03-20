@@ -41,6 +41,10 @@ describe('matchers', () => {
 
     expect(pets).toEqual(expect.objectContaining({
       cats: expect.arrayContaining([felix])
-    }))
+    }));
+
+    expect(pets).toMatchObject({
+      cats: expect.arrayContaining([felix])
+    });
   })
 });
